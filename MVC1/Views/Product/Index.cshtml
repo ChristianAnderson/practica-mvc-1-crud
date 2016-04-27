@@ -1,0 +1,51 @@
+﻿@model IEnumerable<MVC1.Models.Product>
+<!-- IEnumerable significa que es una lista o coleccion de los objetos en este caso productos -->
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Listado de Productos</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateProduct", null ,new { @class = "btn btn-primary"})
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastBuy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastBuy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditProduct", new { id=item.ProductID }) |
+            @Html.ActionLink("Details", "DetailsProduct", new { id=item.ProductID }) |
+            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>
