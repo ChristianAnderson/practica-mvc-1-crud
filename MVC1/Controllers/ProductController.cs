@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MVC1.Context;
 using MVC1.Models;
 using System.Net;
 using System.Data.Entity;
@@ -126,7 +125,8 @@ namespace MVC1.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var product = db.Products.Find(id);
+            var product = db.Products.FirstOrDefault(x => x.ProductID == id);
+            
 
             if (product == null)
             {
@@ -139,12 +139,16 @@ namespace MVC1.Controllers
         //
         // POST: /Product/Delete/5
         [HttpPost]
-        public ActionResult DeleteProduct(int id, FormCollection collection)
+        public ActionResult DeleteProduct(int id, Product product)
         {
             try
             {
+                
                 // TODO: Add delete logic here
-
+               // product = db.Products.FirstOrDefault(x => x.ProductID == id);
+                product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
