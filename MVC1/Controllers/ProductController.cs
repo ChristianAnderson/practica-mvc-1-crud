@@ -143,8 +143,10 @@ namespace MVC1.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+				// TODO: Add delete logic here
+				var product = db.Products.Where(p => p.ProductID == id).SingleOrDefault();
+				db.Products.Remove(product);
+				db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
