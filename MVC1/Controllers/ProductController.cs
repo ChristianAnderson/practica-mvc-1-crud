@@ -144,8 +144,8 @@ namespace MVC1.Controllers
             try
             {
                 
-                // TODO: Add delete logic here
-               // product = db.Products.FirstOrDefault(x => x.ProductID == id);
+                // TODO: Add delete logic here Puto :v
+                // product = db.Products.FirstOrDefault(x => x.ProductID == id);
                 product = db.Products.Find(id);
                 db.Products.Remove(product);
                 db.SaveChanges();
