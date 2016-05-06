@@ -42,9 +42,17 @@
             @Html.DisplayFor(model => model.Stock)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Remarks)
+        </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "EditProduct", new { id = Model.ProductID }, new { @class = "btn btn-success" }) |
-    @Html.ActionLink("Back to List", "Index", null, new {@class = "btn btn-danger" })
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ProductID }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

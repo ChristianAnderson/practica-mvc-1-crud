@@ -14,5 +14,6 @@ namespace MVC1.Models
         public decimal Price { get; set; }
         public DateTime LastBuy { get; set; }
         public float Stock { get; set; }
+        public string Remarks { get; set; }
     }
 }
